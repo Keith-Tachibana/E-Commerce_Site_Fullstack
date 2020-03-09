@@ -29,7 +29,7 @@ class ProductList extends Component {
   render() {
     return (
       <React.Fragment>
-        <ProductListItem products={this.state.products} />
+        <ProductListItem products={this.state.products} setView={this.props.setView} />
       </React.Fragment>
     );
   }
