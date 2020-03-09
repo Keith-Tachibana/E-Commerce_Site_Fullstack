@@ -7,3 +7,24 @@
   height: 15vw;
   object-fit: cover;
 }
+
+.card,
+.back-button {
+  cursor: pointer;
+}
+
+.product-detail {
+  border: 1px solid #ddd;
+  margin: 25px;
+  border-radius: 5px;
+}
+
+.img-detail {
+  height: auto;
+  width: 50%;
+  margin-left: 25px;
+}
+
+.product-desc {
+  margin: 25px;
+}
