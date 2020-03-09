@@ -44,13 +44,18 @@ app.get('/api/products/:productId', (req, res, next) => {
   const sql = `
    SELECT *
      FROM "products"
- ORDER BY "productId" ASC
-    WHERE "productId" = $1
+    WHERE "productId" = $1;
   `;
   db.query(sql, params)
     .then(result => {
-
-    });
+      const product = result.rows[0];
+      if (!product) {
+        next(new ClientError('Cannot find the product specified', 404));
+      } else {
+        res.status(200).json(product);
+      }
+    })
+    .catch(err => next(err));
 });
 
 app.use('/api', (req, res, next) => {
