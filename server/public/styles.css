@@ -37,11 +37,12 @@
   border: 2px solid #ddd;
   border-radius: 5px;
   height: 350px;
+  width: 1000px;
 }
 
 .item-img {
   height: auto;
-  width: 50%;
+  max-width: 250px;
   object-fit: cover;
   margin: 0 auto;
 }
@@ -52,4 +53,10 @@
 
 .item {
   margin-top: 25px;
+}
+
+.cart-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }

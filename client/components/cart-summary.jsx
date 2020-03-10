@@ -14,19 +14,22 @@ class CartSummary extends Component {
     return (
       <React.Fragment>
         <main>
-          <div className="row">
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-              <h5 onClick={(name, params) => setView('catalog', {})} className="back-button mt-4 ml-4"><i className="fas fa-chevron-left"></i> Back to catalog</h5>
+          <h5
+            onClick={(name, params) => setView('catalog', {})}
+            className="back-button mt-4 ml-4 text-secondary">
+            <i className="fas fa-chevron-left mr-2"></i>
+              Back to catalog
+          </h5>
+          <div className="row justify-content-center">
+            <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
               <h2 className="ml-4 mt-4 mb-4">My Cart</h2>
+              <div className="cart-container">
+                {cartItems.length === 0 ? <div>No items in cart</div> : <div>{cartItems}</div>}
+              </div>
+              <h2 className="ml-4">Item Total: ${(total / 100).toFixed(2)}</h2>
             </div>
           </div>
-          <div className="row">
-            {cartItems.length === 0 ? <div>No items in cart</div> : <div>{cartItems}</div>}
-          </div>
         </main>
-        <footer>
-          <h2 className="ml-4">Item Total: ${(total / 100).toFixed(2)}</h2>
-        </footer>
       </React.Fragment>
     );
   }
