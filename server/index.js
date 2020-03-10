@@ -36,7 +36,7 @@ app.get('/api/products', (req, res, next) => {
 app.get('/api/products/:productId', (req, res, next) => {
   const { productId } = req.params;
   if ((!parseInt(productId, 10)) || (parseInt(productId, 10) < 1)) {
-    next(new ClientError('The productId must be a positive integer', 400));
+    throw new ClientError('The productId must be a positive integer', 400);
   }
   const params = [productId];
   const sql = `
@@ -83,7 +83,7 @@ app.get('/api/cart', (req, res, next) => {
 app.post('/api/cart', (req, res, next) => {
   const { productId } = req.body;
   if ((!parseInt(productId, 10)) || (parseInt(productId, 10) < 1)) {
-    next(new ClientError('The productId must be a positive integer', 400));
+    throw new ClientError('The productId must be a positive integer', 400);
   }
   const sql = `
     SELECT "price"
