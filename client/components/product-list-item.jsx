@@ -5,7 +5,10 @@ class ProductListItem extends Component {
     const { products, setView } = this.props;
     const productItems = products.map(product => {
       return (
-        <div key={product.productId} onClick={(name, params) => setView('details', { productId: product.productId })} className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 mt-4 mb-4">
+        <div
+          key={product.productId}
+          onClick={(name, params) => setView('details', { productId: product.productId })}
+          className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 mt-4 mb-4">
           <div className="card h-100">
             <img className="card-img-top img-fluid" src={product.image} alt={product.name} height="50" width="100" />
             <div className="card-body">

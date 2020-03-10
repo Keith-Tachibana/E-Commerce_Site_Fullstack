@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
+import CartSummary from './cart-summary';
 
 class App extends Component {
   constructor(props) {
@@ -77,22 +78,36 @@ class App extends Component {
 
   render() {
     const { view } = this.state;
+    let renderView;
     switch (view.name) {
       case 'details':
-        return (
+        renderView = (
           <React.Fragment>
-            <Header cartItemCount={this.state.cart.length} />
             <ProductDetails params={this.state.view.params} setView={this.setView} addToCart={this.addToCart} />
           </React.Fragment>
         );
-      default:
-        return (
+        break;
+      case 'cart':
+        renderView = (
           <React.Fragment>
-            <Header cartItemCount={this.state.cart.length} />
+            <CartSummary cart={this.state.cart} setView={this.setView} />
+          </React.Fragment>
+        );
+        break;
+      default:
+        renderView = (
+          <React.Fragment>
             <ProductList setView={this.setView} />
           </React.Fragment>
         );
+        break;
     }
+    return (
+      <React.Fragment>
+        <Header cartItemCount={this.state.cart.length} setView={this.setView} />
+        {renderView}
+      </React.Fragment>
+    );
   }
 }
 
