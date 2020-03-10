@@ -33,7 +33,7 @@ class ProductDetails extends Component {
 
   render() {
     const { product } = this.state;
-    const { addToCart } = this.props;
+    const { addToCart, params } = this.props;
     if (!product) {
       return <div className="ml-4">Loading...</div>;
     } else {
@@ -49,7 +49,7 @@ class ProductDetails extends Component {
                 <h1>{product.name}</h1>
                 <h3 className="text-secondary">${(product.price / 100).toFixed(2)}</h3>
                 <h6>{product.shortDescription}</h6>
-                <button className="btn btn-primary" onClick={product => addToCart(product)}>Add To Cart</button>
+                <button className="btn btn-primary" onClick={product => addToCart({ productId: params.productId })}>Add To Cart</button>
               </div>
             </div>
             <div className="row">
