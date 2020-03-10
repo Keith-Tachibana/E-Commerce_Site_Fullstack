@@ -13,7 +13,8 @@ class App extends Component {
       view: {
         name: 'catalog',
         params: {}
-      }
+      },
+      cart: []
     };
     this.setView = this.setView.bind(this);
   }
@@ -24,6 +25,7 @@ class App extends Component {
       .then(data => this.setState({ message: data.message || data.error }))
       .catch(err => this.setState({ message: err.message }))
       .finally(() => this.setState({ isLoading: false }));
+    this.getCartItems();
   }
 
   setView(name, params) {
@@ -35,13 +37,25 @@ class App extends Component {
     });
   }
 
+  async getCartItems() {
+    try {
+      const response = await fetch('/api/cart');
+      const cart = await response.json();
+      this.setState({
+        cart
+      });
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+
   render() {
     const { view } = this.state;
     switch (view.name) {
       case 'details':
         return (
           <React.Fragment>
-            <Header />
+            <Header cartItemCount={this.state.cart.length}/>
             <ProductDetails params={this.state.view.params} setView={this.setView} />
           </React.Fragment>
         );
