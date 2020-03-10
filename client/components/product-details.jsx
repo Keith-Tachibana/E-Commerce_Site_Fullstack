@@ -39,7 +39,7 @@ class ProductDetails extends Component {
       return (
         <React.Fragment>
           <section className="product-detail">
-            <h5 onClick={this.handleBackToCatalog} className="back-button mt-4 ml-4">&lt; Back to catalog</h5>
+            <h5 onClick={this.handleBackToCatalog} className="back-button mt-4 ml-4"><i className="fas fa-chevron-left"></i> Back to catalog</h5>
             <div className="row">
               <div className="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 mt-4">
                 <img src={product.image} alt={product.name} className="img-detail img-fluid" />
