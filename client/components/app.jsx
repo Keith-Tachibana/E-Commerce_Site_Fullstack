@@ -17,6 +17,7 @@ class App extends Component {
       cart: []
     };
     this.setView = this.setView.bind(this);
+    this.addToCart = this.addToCart.bind(this);
   }
 
   componentDidMount() {
@@ -49,20 +50,45 @@ class App extends Component {
     }
   }
 
+  async addToCart(product) {
+    try {
+      const productAdded = {
+        productId: product.productId
+      };
+      const headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      const response = await fetch('/api/cart', {
+        method: 'POST',
+        body: JSON.stringify(productAdded),
+        headers
+      });
+      const json = await response.json();
+      this.setState(previous => {
+        const updatedCart = previous.cart;
+        updatedCart.push(json);
+        return {
+          cart: updatedCart
+        };
+      });
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   render() {
     const { view } = this.state;
     switch (view.name) {
       case 'details':
         return (
           <React.Fragment>
-            <Header cartItemCount={this.state.cart.length}/>
-            <ProductDetails params={this.state.view.params} setView={this.setView} />
+            <Header cartItemCount={this.state.cart.length} />
+            <ProductDetails params={this.state.view.params} setView={this.setView} addToCart={this.addToCart} />
           </React.Fragment>
         );
       default:
         return (
           <React.Fragment>
-            <Header />
+            <Header cartItemCount={this.state.cart.length} />
             <ProductList setView={this.setView} />
           </React.Fragment>
         );
