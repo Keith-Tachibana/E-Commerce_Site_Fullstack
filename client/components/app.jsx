@@ -64,7 +64,7 @@ class App extends Component {
       });
       const json = await response.json();
       this.setState(previous => {
-        const updatedCart = previous.cart;
+        const updatedCart = [...previous.cart];
         updatedCart.push(json);
         return {
           cart: updatedCart
