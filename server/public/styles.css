@@ -60,3 +60,11 @@
   flex-direction: column;
   align-items: flex-start;
 }
+
+.alerts {
+  color: #FF0000;
+}
+
+.valid {
+  color: #00FF00;
+}
