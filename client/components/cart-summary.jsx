@@ -27,6 +27,11 @@ class CartSummary extends Component {
                 {cartItems.length === 0 ? <div>No items in cart</div> : <div>{cartItems}</div>}
               </div>
               <h2 className="ml-4">Item Total: ${(total / 100).toFixed(2)}</h2>
+              <button
+                className="float-right mb-4 btn btn-primary"
+                onClick={(name, params) => setView('checkout', {})}>
+                  Checkout
+              </button>
             </div>
           </div>
         </main>

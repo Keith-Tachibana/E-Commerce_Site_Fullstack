@@ -4,6 +4,7 @@ import Header from './header';
 import ProductList from './product-list';
 import ProductDetails from './product-details';
 import CartSummary from './cart-summary';
+import CheckoutForm from './checkout-form';
 
 class App extends Component {
   constructor(props) {
@@ -19,6 +20,7 @@ class App extends Component {
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
+    this.placeOrder = this.placeOrder.bind(this);
   }
 
   componentDidMount() {
@@ -72,7 +74,24 @@ class App extends Component {
         };
       });
     } catch (error) {
-      console.error(error);
+      console.error(error.message);
+    }
+  }
+
+  async placeOrder(order) {
+    try {
+      const headers = new Headers();
+      headers.append('Content-Type', 'application/json');
+      await fetch('/api/orders', {
+        method: 'POST',
+        body: JSON.stringify(order),
+        headers
+      });
+      this.setState({
+        cart: []
+      }, (name, params) => this.setView('catalog', {}));
+    } catch (error) {
+      console.error(error.message);
     }
   }
 
@@ -83,28 +102,46 @@ class App extends Component {
       case 'details':
         renderView = (
           <React.Fragment>
-            <ProductDetails params={this.state.view.params} setView={this.setView} addToCart={this.addToCart} />
+            <ProductDetails
+              params={this.state.view.params}
+              setView={this.setView}
+              addToCart={this.addToCart} />
           </React.Fragment>
         );
         break;
       case 'cart':
         renderView = (
           <React.Fragment>
-            <CartSummary cart={this.state.cart} setView={this.setView} />
+            <CartSummary
+              cart={this.state.cart}
+              setView={this.setView} />
+          </React.Fragment>
+        );
+        break;
+      case 'checkout':
+        renderView = (
+          <React.Fragment>
+            <CheckoutForm
+              cart={this.state.cart}
+              setView={this.setView}
+              placeOrder={this.placeOrder}/>
           </React.Fragment>
         );
         break;
       default:
         renderView = (
           <React.Fragment>
-            <ProductList setView={this.setView} />
+            <ProductList
+              setView={this.setView} />
           </React.Fragment>
         );
         break;
     }
     return (
       <React.Fragment>
-        <Header cartItemCount={this.state.cart.length} setView={this.setView} />
+        <Header
+          cartItemCount={this.state.cart.length}
+          setView={this.setView} />
         {renderView}
       </React.Fragment>
     );
