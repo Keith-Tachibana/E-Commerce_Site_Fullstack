@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class ProductDetails extends Component {
   constructor(props) {
@@ -6,7 +7,6 @@ class ProductDetails extends Component {
     this.state = {
       product: null
     };
-    this.handleBackToCatalog = this.handleBackToCatalog.bind(this);
   }
 
   componentDidMount() {
@@ -26,11 +26,6 @@ class ProductDetails extends Component {
     }
   }
 
-  handleBackToCatalog() {
-    const { setView } = this.props;
-    setView('catalog', {});
-  }
-
   render() {
     const { product } = this.state;
     const { addToCart, params } = this.props;
@@ -40,12 +35,13 @@ class ProductDetails extends Component {
       return (
         <React.Fragment>
           <section className="product-detail">
-            <h5
-              onClick={this.handleBackToCatalog}
-              className="back-button mt-4 ml-4 text-secondary">
-              <i className="fas fa-chevron-left mr-2"></i>
+            <Link to="/" className="text-muted">
+              <h5
+                className="back-button mt-4 ml-4">
+                <i className="fas fa-chevron-left mr-2"></i>
                  Back to catalog
-            </h5>
+              </h5>
+            </Link>
             <div className="row">
               <div className="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 mt-4">
                 <img src={product.image} alt={product.name} className="img-detail img-fluid" />
@@ -53,7 +49,7 @@ class ProductDetails extends Component {
               <div className="col-7 col-sm-7 col-md-7 col-lg-7 col-xl-7">
                 <h1>{product.name}</h1>
                 <h3 className="text-secondary">${(product.price / 100).toFixed(2)}</h3>
-                <h6>{product.shortDescription}</h6>
+                <h6 className="mr-4">{product.shortDescription}</h6>
                 <button
                   className="btn btn-primary"
                   onClick={product => addToCart({ productId: params.productId })}>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class CartSummaryItem extends Component {
   render() {
-    const { item } = this.props;
+    const { item, deleteItem } = this.props;
     return (
       <React.Fragment>
         <div className="item-container mb-4 ml-4 mr-4">
@@ -14,6 +14,11 @@ class CartSummaryItem extends Component {
               <h3>{item.name}</h3>
               <h5 className="text-secondary">${(item.price / 100).toFixed(2)}</h5>
               <p>{item.shortDescription}</p>
+              <button
+                className="btn btn-danger"
+                onClick={() => deleteItem(item.cartItemId)}>
+                  Remove From Cart
+              </button>
             </div>
           </div>
         </div>

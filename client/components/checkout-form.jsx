@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 class CheckoutForm extends Component {
   constructor(props) {
@@ -81,7 +82,7 @@ class CheckoutForm extends Component {
   }
 
   render() {
-    const { setView, cart } = this.props;
+    const { cart } = this.props;
     const total = cart.reduce((accumulator, current) => accumulator + current.price, 0);
     return (
       <React.Fragment>
@@ -168,19 +169,22 @@ class CheckoutForm extends Component {
         <footer className="container">
           <div className="row">
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
-              <h5
-                onClick={(name, params) => setView('catalog', {})}
-                className="back-button pt-4 ml-4 text-secondary">
-                <i className="fas fa-chevron-left mr-2"></i>
-                  Continue shopping
-              </h5>
-              <button
-                name="place-order"
-                type="submit"
-                onClick={this.handleSubmit}
-                className="btn btn-primary float-right">
-                  Place Order
-              </button>
+              <div className="form-footer justify-content-between mt-4">
+                <Link to="/" className="text-muted">
+                  <h5
+                    className="back-button ml-4">
+                    <i className="fas fa-chevron-left mr-2"></i>
+                    Continue shopping
+                  </h5>
+                </Link>
+                <button
+                  name="place-order"
+                  type="submit"
+                  onClick={this.handleSubmit}
+                  className="btn btn-primary">
+                    Place Order
+                </button>
+              </div>
             </div>
           </div>
         </footer>

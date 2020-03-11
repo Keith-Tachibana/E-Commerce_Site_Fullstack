@@ -36,7 +36,7 @@ app.get('/api/products', (req, res, next) => {
 app.get('/api/products/:productId', (req, res, next) => {
   const { productId } = req.params;
   if ((!parseInt(productId, 10)) || (parseInt(productId, 10) < 1)) {
-    throw new ClientError('The productId must be a positive integer', 400);
+    throw new ClientError('The productId must be a positive integer.', 400);
   }
   const params = [productId];
   const sql = `
@@ -48,7 +48,7 @@ app.get('/api/products/:productId', (req, res, next) => {
     .then(result => {
       const product = result.rows[0];
       if (!product) {
-        next(new ClientError('Cannot find the product specified', 404));
+        next(new ClientError('Cannot find the product specified.', 404));
       } else {
         res.status(200).json(product);
       }
@@ -83,7 +83,7 @@ app.get('/api/cart', (req, res, next) => {
 app.post('/api/cart', (req, res, next) => {
   const { productId } = req.body;
   if ((!parseInt(productId, 10)) || (parseInt(productId, 10) < 1)) {
-    throw new ClientError('The productId must be a positive integer', 400);
+    throw new ClientError('The productId must be a positive integer.', 400);
   }
   const sql = `
     SELECT "price"
@@ -93,7 +93,7 @@ app.post('/api/cart', (req, res, next) => {
   db.query(sql, [productId])
     .then(result => {
       if (result.rows.length === 0) {
-        throw new ClientError(`The product with productId ${productId} not found`, 400);
+        throw new ClientError(`The product with productId ${productId} not found.`, 400);
       }
       if (req.session.cartId) {
         const cart = {
@@ -170,6 +170,31 @@ app.post('/api/orders', (req, res, next) => {
     .then(result => {
       delete req.session.cartId;
       res.status(201).json(result.rows[0]);
+    })
+    .catch(err => next(err));
+});
+
+app.delete('/api/cartItems/:cartItemId', (req, res, next) => {
+  const { cartId } = req.session;
+  if (!cartId) {
+    throw new ClientError('There is no cartId on this session.', 400);
+  }
+  const { cartItemId } = req.params;
+  if ((!parseInt(cartItemId, 10)) || (parseInt(cartItemId, 10) < 1)) {
+    throw new ClientError('The cartItemId must be a positive integer.', 400);
+  }
+  const sql = `
+    DELETE FROM "cartItems"
+          WHERE "cartItemId" = $1
+      RETURNING "cartItemId";
+  `;
+  db.query(sql, [cartItemId])
+    .then(result => {
+      if (result.rows.length === 0) {
+        throw new ClientError(`The cart item with cartItemId ${cartItemId} not found.`, 400);
+      } else {
+        res.sendStatus(204);
+      }
     })
     .catch(err => next(err));
 });
