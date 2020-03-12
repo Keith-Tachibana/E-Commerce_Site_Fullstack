@@ -33,7 +33,7 @@ Try the application live on [my portfolio website](https://www.keith-tachibana.c
 ## Development
 #### System Requirements
 - -Nginx 1.10 or higher
-- -Node.js 10 or higher
+- -Node 10 or higher
 - -NPM 6 or higher
 - -PM2 4 or higher
 - -PostgreSQL 10 or higher
