@@ -32,11 +32,11 @@ Try the application live on [my portfolio website](https://www.keith-tachibana.c
 ![E-Commerce Site Fullstack Preview](preview.gif "E-Commerce Site Fullstack Preview")
 ## Development
 #### System Requirements
+- -Nginx 1.10 or higher
 - -Node.js 10 or higher
 - -NPM 6 or higher
+- -PM2 4 or higher
 - -PostgreSQL 10 or higher
-- -nginx 1.10 or higher
-- -pm2 4 or higher
 #### Getting Started
 1. Clone the repository
   ```shell
