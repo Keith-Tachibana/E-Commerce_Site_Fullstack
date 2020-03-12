@@ -116,14 +116,14 @@ Try the application live on [my portfolio website](https://www.keith-tachibana.c
   cd /etc/nginx/sites-available
   sudo nano default
   ```
-   - In the "server" code block, add this underneath the first location definition:
+   - -In the "server" code block, add this underneath the first location definition:
   ```shell
   location /api {
     proxy_pass http://127.0.0.1:3001;
   }
   ```
-   - Save your changes (`Ctrl + O`) and exit (`Ctrl + X`)
-   - Link your default site to the sites-enabled directory (if not already done):
+   - -Save your changes (`Ctrl + O`) and exit (`Ctrl + X`)
+   - -Link your default site to the sites-enabled directory (if not already done):
   ```shell
   sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
   ```
