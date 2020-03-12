@@ -21,7 +21,7 @@ A full-stack e-commerce website that lets the user view, add, and remove items f
 - -FontAwesome 5.11.2
 - -nginx 1.14.0
 ## Live Demo
-Try the application live on [my portfolio website](https://www.keith-tachibana.com/portfolio/eCommerceSite/index.html)
+Try the application live on [my portfolio website](https://www.keith-tachibana.com/portfolio/eCommerceSite/server/public/index.html)
 ## Features
 - -Shopper can view the products for sale
 - -Shopper can view the details of any product by clicking on it
