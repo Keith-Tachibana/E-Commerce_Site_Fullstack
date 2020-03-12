@@ -3,7 +3,6 @@ A full-stack e-commerce website that lets the user view, add, and remove items f
 ## Technologies Used
 - -React 16.13.0
 - -ReactDOM 16.13.0
-- -React-Router-DOM 5.1.2
 - -Express 4.17.1
 - -Express-Session 1.17.0
 - -Node 10.15.3
