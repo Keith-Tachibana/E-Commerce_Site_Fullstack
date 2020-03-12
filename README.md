@@ -5,6 +5,7 @@ A full-stack e-commerce website that lets the user view, add, and remove items f
 - -@Babel/Plugin-Transform-React-JSX 7.8.3
 - -Babel-Loader 8.0.6
 - -Bootstrap 4.3.1
+- -CORS 2.8.5
 - -Express 4.17.1
 - -Express Session 1.17.0
 - -FontAwesome 5.11.2
