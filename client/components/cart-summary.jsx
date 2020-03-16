@@ -30,7 +30,7 @@ class CartSummary extends Component {
               <h2 className="ml-4 mt-4 mb-4">My Cart</h2>
               <div className="cart-container">
                 {cartItems.length === 0 ? <div className="ml-4 mb-4"><em>No items in cart</em></div> : <div>{cartItems}</div>}
-                <div className="cart-footer justify-content-between my-4">
+                <div className="cart-footer justify-content-between my-4 w-75">
                   <h2 className="ml-4">Item Total: ${(total / 100).toFixed(2)}</h2>
                   <button
                     className="btn btn-primary">

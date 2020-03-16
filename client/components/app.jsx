@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
 import Header from './header';
 import ProductList from './product-list';
@@ -120,7 +120,7 @@ class App extends Component {
 
   render() {
     return (
-      <BrowserRouter>
+      <Router>
         <Header
           cartItemCount={this.state.cart.length} />
         <Switch>
@@ -153,7 +153,7 @@ class App extends Component {
           } />
           <Route path="/" render={() => <div className="m-4 h1"><em>404:</em> Page not found</div>} />
         </Switch>
-      </BrowserRouter>
+      </Router>
     );
   }
 }

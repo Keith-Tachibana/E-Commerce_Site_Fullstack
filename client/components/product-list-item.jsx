@@ -9,7 +9,7 @@ class ProductListItem extends Component {
         <div
           key={product.productId}
           onClick={(name, params) => setView('details', { productId: product.productId })}
-          className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 mt-4 mb-4">
+          className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4 mt-4 mb-4 product-item">
           <Link to={`/${product.productId}`} className="text-body" >
             <div className="card h-100">
               <img className="card-img-top img-fluid" src={product.image} alt={product.name} height="50" width="100" />
@@ -26,7 +26,7 @@ class ProductListItem extends Component {
     return (
       <React.Fragment>
         <main className="container">
-          <div className="row">
+          <div className="row product-items">
             {productItems}
           </div>
         </main>

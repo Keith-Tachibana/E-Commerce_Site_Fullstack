@@ -42,11 +42,11 @@ class ProductDetails extends Component {
                  Back to catalog
               </h5>
             </Link>
-            <div className="row">
-              <div className="col-5 col-sm-5 col-md-5 col-lg-5 col-xl-5 mt-4">
+            <div className="row details-top">
+              <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-5 mt-4 img-container">
                 <img src={product.image} alt={product.name} className="img-detail img-fluid" />
               </div>
-              <div className="col-7 col-sm-7 col-md-7 col-lg-7 col-xl-7">
+              <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-7 product-info">
                 <h1>{product.name}</h1>
                 <h3 className="text-secondary">${(product.price / 100).toFixed(2)}</h3>
                 <h6 className="mr-4">{product.shortDescription}</h6>

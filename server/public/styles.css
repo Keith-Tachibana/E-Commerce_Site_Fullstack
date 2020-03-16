@@ -36,8 +36,7 @@
   justify-content: center;
   border: 2px solid #ddd;
   border-radius: 5px;
-  height: 350px;
-  width: 1000px;
+  padding: 15px;
 }
 
 .item-img {
@@ -82,4 +81,96 @@
 
 .form-footer {
   display: flex;
+}
+
+@media only screen and (max-width: 575px) {
+  .product-items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .product-item {
+    min-width: 100%;
+  }
+
+  header h1,
+  header a h3 {
+    font-size: 1.25rem;
+  }
+
+  header h1 {
+    margin: 5px 0;
+  }
+
+  .img-container {
+    max-width: 90%;
+    position: relative;
+    right: 7%;
+  }
+
+  .details-top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 100%;
+  }
+
+  .product-info > * {
+    margin-left: 10px;
+  }
+
+  .img-detail {
+    min-width: 100%;
+  }
+
+  .cart-footer > * {
+    font-size: 1.25rem;
+  }
+
+  .cart-footer button {
+    font-size: 1rem;
+  }
+
+  .cart-footer {
+    min-width: 90%;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    font-size: 0.7rem;
+  }
+
+  .footer-container > * {
+    margin-bottom: 10px;
+  }
+
+  .alerts {
+    font-size: 0.75rem;
+  }
+
+  .item-summary {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .item-container {
+    max-width: 80%;
+  }
+
+  .item > * {
+    margin: 0 15px;
+  }
+
+  .item button {
+    margin-top: 10px;
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 667px) and (orientation: landscape) {
+  .product-items {
+    display: flex;
+
+  }
 }
