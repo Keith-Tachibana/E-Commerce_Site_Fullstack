@@ -1,27 +1,27 @@
 # E-Commerce Site Fullstack
 A full-stack e-commerce website that lets the user view, add, and remove items from a shopping cart and place an order
 ## Technologies Used
+- -@Babel/Core 7.8.7
+- -@Babel/Plugin-Transform-React-JSX 7.8.3
+- -Babel-Loader 8.0.6
+- -Bootstrap 4.3.1
+- -CORS 2.8.5
+- -Express 4.17.1
+- -Express Session 1.17.0
+- -FontAwesome 5.11.2
+- -Nginx 1.14.0
+- -Node 10.15.3
+- -NPM 6.4.1
+- -PG 7.18.2
+- -PM2 4.2.3
+- -PostgreSQL 10.10
 - -React 16.13.0
 - -ReactDOM 16.13.0
-- -React-Router-DOM 5.1.2
-- -Express 4.17.1
-- -Express-Session 1.17.0
-- -Node 10.15.3
-- -npm 6.4.1
-- -pg 7.18.2
-- -pm2 4.2.3
-- -Session-File-Store 1.4.0
-- -@babel/core 7.8.7
-- -@babel/plugin-transform-react-jsx 7.8.3
-- -Babel-Loader 8.0.6
+- -Session File Store 1.4.0
 - -Webpack 4.42.0
 - -Webpack-CLI 3.3.11
-- -PostgreSQL 10.10
-- -Bootstrap 4.3.1
-- -FontAwesome 5.11.2
-- -nginx 1.14.0
 ## Live Demo
-Try the application live on [my portfolio website](https://www.keith-tachibana.com/portfolio/eCommerceSite/index.html)
+Try the application live on [my portfolio website](https://www.keith-tachibana.com/portfolio/eCommerceSite/server/public/index.html)
 ## Features
 - -Shopper can view the products for sale
 - -Shopper can view the details of any product by clicking on it
@@ -33,11 +33,11 @@ Try the application live on [my portfolio website](https://www.keith-tachibana.c
 ![E-Commerce Site Fullstack Preview](preview.gif "E-Commerce Site Fullstack Preview")
 ## Development
 #### System Requirements
-- -Node.js 10 or higher
+- -Nginx 1.10 or higher
+- -Node 10 or higher
 - -NPM 6 or higher
+- -PM2 4 or higher
 - -PostgreSQL 10 or higher
-- -nginx 1.10 or higher
-- -pm2 4 or higher
 #### Getting Started
 1. Clone the repository
   ```shell
@@ -117,14 +117,14 @@ Try the application live on [my portfolio website](https://www.keith-tachibana.c
   cd /etc/nginx/sites-available
   sudo nano default
   ```
-   - In the "server" code block, add this underneath the first location definition:
+   - -In the "server" code block, add this underneath the first location definition:
   ```shell
   location /api {
     proxy_pass http://127.0.0.1:3001;
   }
   ```
-   - Save your changes (`Ctrl + O`) and exit (`Ctrl + X`)
-   - Link your default site to the sites-enabled directory (if not already done):
+   - -Save your changes (`Ctrl + O`) and exit (`Ctrl + X`)
+   - -Link your default site to the sites-enabled directory (if not already done):
   ```shell
   sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
   ```
