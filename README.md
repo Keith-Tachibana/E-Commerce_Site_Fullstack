@@ -7,7 +7,7 @@ A full-stack e-commerce website that lets the user view, add, and remove items f
 - -Bootstrap 4.3.1
 - -CORS 2.8.5
 - -Express 4.17.1
-- -Express Session 1.17.0
+- -Express-Session 1.17.0
 - -FontAwesome 5.11.2
 - -Nginx 1.14.0
 - -Node 10.15.3
@@ -16,8 +16,8 @@ A full-stack e-commerce website that lets the user view, add, and remove items f
 - -PM2 4.2.3
 - -PostgreSQL 10.10
 - -React 16.13.0
-- -ReactDOM 16.13.0
-- -Session File Store 1.4.0
+- -React-DOM 16.13.0
+- -Session-File-Store 1.4.0
 - -Webpack 4.42.0
 - -Webpack-CLI 3.3.11
 ## Live Demo
@@ -106,9 +106,9 @@ Try the application live on [my portfolio website](https://www.keith-tachibana.c
     "createdAt"       timestamptz(6) not null default now()
   );
   ```
-12. Go back to the console and use psql REPL (Read Eval Print Loop) to import example data
+12. Go back to the console and use the psql REPL (Read Eval Print Loop) to import example data
   ```shell
-  psql wickedSales
+  psql db=wickedSales
   \copy products from '/home/dev/lfz/E-Commerce_Site_Fullstack/products.csv' delimiter ',' csv header;
   ```
   - ...where `/home/dev/lfz/E-Commerce_Site_Fullstack` is the absolute path to your cloned folder from step 2
@@ -145,5 +145,3 @@ Try the application live on [my portfolio website](https://www.keith-tachibana.c
   sudo pm2 start index.js
   ```
 18. Open your default web browser and navigate to http://localhost:3000/ to see the result!
-
-  
