@@ -144,6 +144,6 @@ Try the application live on [my portfolio website](https://www.keith-tachibana.c
   ```shell
   sudo pm2 start index.js
   ```
-18. Open your default web browser and navigate to http://localhost:3001/ to see the result!
+18. Open your default web browser and navigate to http://localhost:3000/ to see the result!
 
   
