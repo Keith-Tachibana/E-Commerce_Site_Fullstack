@@ -1,43 +1,43 @@
 # E-Commerce Site Fullstack
-A full-stack e-commerce website that lets the user view, add, and remove items from a shopping cart and place an order
+A fictional, full-stack e-commerce website that lets the user view, add, and remove items from a shopping cart and place an order
 ## Technologies Used
-- -@Babel/Core 7.8.7
-- -@Babel/Plugin-Transform-React-JSX 7.8.3
-- -Babel-Loader 8.0.6
-- -Bootstrap 4.3.1
-- -CORS 2.8.5
-- -Express 4.17.1
-- -Express-Session 1.17.0
-- -FontAwesome 5.11.2
-- -Nginx 1.14.0
-- -Node 10.15.3
-- -NPM 6.4.1
-- -PG 7.18.2
-- -PM2 4.2.3
-- -PostgreSQL 10.10
-- -React 16.13.0
-- -React-DOM 16.13.0
-- -Session-File-Store 1.4.0
-- -Webpack 4.42.0
-- -Webpack-CLI 3.3.11
+|             Dependency             |   Version   |
+|------------------------------------|------------:|
+| @Babel/Core                        |    7.8.7    |
+| @Babel/Plugin-Transform-React-JSX  |    7.8.3    |
+| Babel-Loader                       |    8.0.6    |
+| Bootstrap                          |    4.3.1    |
+| CORS                               |    2.8.5    |
+| Express                            |    4.17.1   |
+| Express-Session                    |    1.17.0   |
+| FontAwesome                        |    5.11.2   |
+| PG                                 |    7.18.2   |
+| PM2                                |    4.2.3    |
+| React                              |   16.13.0   |
+| React-DOM                          |   16.13.0   |
+| Session-File-Store                 |    1.4.0    |
+| Webpack                            |    4.42.0   |
+| Webpack-CLI                        |    3.3.11   |
 ## Live Demo
 Try the application live on [my portfolio website](https://www.keith-tachibana.com/portfolio/eCommerceSite/server/public/index.html)
 ## Features
-- -Shopper can view the products for sale
-- -Shopper can view the details of any product by clicking on it
-- -Shopper can add a product to the shopping cart
-- -Shopper can remove a product from the shopping cart
-- -Shopper can view the cart summary of all the items added to see the total price
-- -Shopper can fill out a form with his/her pertinent information to place the order
+- Shopper can view the products for sale
+- Shopper can view the details of any product by clicking on it
+- Shopper can add a product to the shopping cart
+- Shopper can remove a product from the shopping cart
+- Shopper can view the cart summary of all the items added to see the total price
+- Shopper can fill out a form with his/her pertinent information to place the order
 ## Preview
 ![E-Commerce Site Fullstack Preview](preview.gif "E-Commerce Site Fullstack Preview")
 ## Development
 #### System Requirements
-- -Nginx 1.10 or higher
-- -Node 10 or higher
-- -NPM 6 or higher
-- -PM2 4 or higher
-- -PostgreSQL 10 or higher
+|   Requirement   |     Version      |
+|-----------------|-----------------:|
+| Nginx           |  1.10 or higher  |
+| Node            |   10 or higher   |
+| NPM             |    6 or higher   |
+| PM2             |    4 or higher   |
+| PostgreSQL      |   10 or higher   |
 #### Getting Started
 1. Clone the repository
   ```shell
