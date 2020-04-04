@@ -8,6 +8,7 @@ A fictional, full-stack e-commerce website that lets the user view, add, and rem
 | Babel-Loader                       |    8.0.6    |
 | Bootstrap                          |    4.3.1    |
 | CORS                               |    2.8.5    |
+| Dotenv                             |    8.2.0    |
 | Express                            |    4.17.1   |
 | Express-Session                    |    1.17.0   |
 | FontAwesome                        |    5.11.2   |
@@ -15,6 +16,7 @@ A fictional, full-stack e-commerce website that lets the user view, add, and rem
 | PM2                                |    4.2.3    |
 | React                              |   16.13.0   |
 | React-DOM                          |   16.13.0   |
+| React-Router-DOM                   |    5.1.2    |
 | Session-File-Store                 |    1.4.0    |
 | Webpack                            |    4.42.0   |
 | Webpack-CLI                        |    3.3.11   |
