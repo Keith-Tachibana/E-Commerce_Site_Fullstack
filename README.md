@@ -21,7 +21,7 @@ A fictional, full-stack e-commerce website that lets the user view, add, and rem
 | Webpack                            |    4.42.0   |
 | Webpack-CLI                        |    3.3.11   |
 ## Live Demo
-Try the application live on [my portfolio website](https://www.keith-tachibana.com/portfolio/eCommerceSite/server/public/index.html)
+Try the application live on [my portfolio website](https://ecommerce.keith-tachibana.com/)
 ## Features
 - Shopper can view the products for sale
 - Shopper can view the details of any product by clicking on it
