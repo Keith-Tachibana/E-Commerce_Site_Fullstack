@@ -23,12 +23,12 @@ A fictional, full-stack e-commerce website that lets the user view, add, and rem
 ## Live Demo
 Try the application live on [my portfolio website](https://ecommerce.keith-tachibana.com/)
 ## Features
-- Shopper can view the products for sale
-- Shopper can view the details of any product by clicking on it
-- Shopper can add a product to the shopping cart
-- Shopper can remove a product from the shopping cart
-- Shopper can view the cart summary of all the items added to see the total price
-- Shopper can fill out a form with his/her pertinent information to place the order
+- _*_ Shopper can view the products for sale
+- _*_ Shopper can view the details of any product by clicking on it
+- _*_ Shopper can add a product to the shopping cart
+- _*_ Shopper can remove a product from the shopping cart
+- _*_ Shopper can view the cart summary of all the items added to see the total price
+- _*_ Shopper can fill out a form with his/her pertinent information to place the order
 ## Preview
 ![E-Commerce Site Fullstack Preview](preview.gif "E-Commerce Site Fullstack Preview")
 ## Development
