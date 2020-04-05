@@ -1,5 +1,5 @@
 # E-Commerce Site Fullstack
-A fictional, full-stack e-commerce website that lets the user view, add, and remove items from a shopping cart and place an order
+A full-stack e-commerce website that lets the user view, add, and remove items from a shopping cart and place an order
 ## Technologies Used
 |             Dependency             |   Version   |
 |------------------------------------|------------:|
