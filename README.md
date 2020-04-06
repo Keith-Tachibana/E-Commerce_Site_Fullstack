@@ -33,13 +33,14 @@ Try the application live on [my portfolio website](https://ecommerce.keith-tachi
 ![E-Commerce Site Fullstack Preview](preview.gif "E-Commerce Site Fullstack Preview")
 ## Development
 #### System Requirements
-|   Requirement   |     Version      |
-|-----------------|-----------------:|
-| Nginx           |  1.10 or higher  |
-| Node            |   10 or higher   |
-| NPM             |    6 or higher   |
-| PM2             |    4 or higher   |
-| PostgreSQL      |   10 or higher   |
+|   Requirement   |       Version       |
+|-----------------|--------------------:|
+| Nginx           |    1.10 or higher   |
+| Node            |     10 or higher    |
+| NPM             |     6 or higher     |
+| PM2             |      4 or higher    |
+| PostgreSQL      |     10 or higher    |
+| Ubuntu Server   | 18.04 LTS or higher |
 #### Getting Started
 1. Clone the repository
   ```shell
