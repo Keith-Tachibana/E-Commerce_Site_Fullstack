@@ -69,46 +69,46 @@ Try the application live on [my portfolio website](https://ecommerce.keith-tachi
   ```shell
   pgweb --db=wickedSales
   ```
-  - Then navigate to http://localhost:8081 and click on the "Query" tab
+  - 7a. Then navigate to http://localhost:8081 and click on the "Query" tab
 8. Create schema for products table by copy and pasting this query, then click on "Run Query"
   ```sql
-  create table "products" (
-    "productId"        serial  primary key,
-    "name"             text    not null,
-    "price"            integer not null,
-    "image"            text    not null,
-    "shortDescription" text    not null,
-    "longDescription"  text    not null
+  CREATE TABLE "products" (
+    "productId"        SERIAL  PRIMARY KEY,
+    "name"             TEXT    NOT NULL,
+    "price"            INTEGER NOT NULL,
+    "image"            TEXT    NOT NULL,
+    "shortDescription" TEXT    NOT NULL,
+    "longDescription"  TEXT    NOT NULL
   );
   ```
 9. Create schema for carts table by copy and pasting this query, then click on "Run Query"
   ```sql
-  create table "carts" (
-    "cartId"    serial         primary key,
-    "createdAt" timestamptz(6) not null default now()
+  CREATE TABLE "carts" (
+    "cartId"    SERIAL         PRIMARY KEY,
+    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT NOW()
   );
   ```
 10. Create schema for cartItems table by copy and pasting this query, then click on "Run Query"
   ```sql
-  create table "cartItems" (
-    "cartItemId" serial  primary key,
-    "cartId"     integer not null,
-    "productId"  integer not null,
-    "price"      integer not null
+  CREATE TABLE "cartItems" (
+    "cartItemId" SERIAL  PRIMARY KEY,
+    "cartId"     INTEGER NOT NULL,
+    "productId"  INTEGER NOT NULL,
+    "price"      INTEGER NOT NULL
   );
   ```
 11. Create schema for orders table by copy and pasting this query, then click on "Run Query"
   ```sql
-  create table "orders" (
-    "orderId"         serial         primary key,
-    "cartId"          integer        not null,
-    "name"            text           not null,
-    "creditCard"      text           not null,
-    "shippingAddress" text           not null,
-    "createdAt"       timestamptz(6) not null default now()
+  CREATE TABLE "orders" (
+    "orderId"         SERIAL         PRIMARY KEY,
+    "cartId"          INTEGER        NOT NULL,
+    "name"            TEXT           NOT NULL,
+    "creditCard"      TEXT           NOT NULL,
+    "shippingAddress" TEXT           NOT NULL,
+    "createdAt"       TIMESTAMPTZ(6) NOT NULL DEFAULT NOW()
   );
   ```
-12. Go back to the console and use the psql REPL (Read Eval Print Loop) to import example data
+12. Go back to the console and use the psql REPL (Read Eval Print Loop) to import dummy data
   ```shell
   psql db=wickedSales
   \copy products from '/home/dev/lfz/E-Commerce_Site_Fullstack/products.csv' delimiter ',' csv header;
@@ -119,17 +119,17 @@ Try the application live on [my portfolio website](https://ecommerce.keith-tachi
   cd /etc/nginx/sites-available
   sudo nano default
   ```
-   - -In the "server" code block, add this underneath the first location definition:
-  ```shell
-  location /api {
-    proxy_pass http://127.0.0.1:3001;
-  }
-  ```
-   - -Save your changes (`Ctrl + O`) and exit (`Ctrl + X`)
-   - -Link your default site to the sites-enabled directory (if not already done):
-  ```shell
-  sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
-  ```
+   - 13a. In the "server" code block, add this underneath the first location definition:
+        ```shell
+        location /api {
+          proxy_pass http://127.0.0.1:3001;
+        }
+        ```
+   - 13b. Save your changes (`Ctrl + O`) and exit (`Ctrl + X`)
+   - 13c. Link your default site to the sites-enabled directory (if not already done):
+        ```shell
+        sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
+        ```
 14. Start nginx
   ```shell
   sudo service nginx start
@@ -138,12 +138,8 @@ Try the application live on [my portfolio website](https://ecommerce.keith-tachi
   ```shell
   npm run build
   ```
-16. Change directory to the server folder
+16. Start the Express.js server using the PM2 module
   ```shell
-  cd server/
+  sudo pm2 --name "eCommerceSite" start "npm run start"
   ```
-17. Start the Express.js server using the pm2 module
-  ```shell
-  sudo pm2 start index.js
-  ```
-18. Open your default web browser and navigate to http://localhost:3000/ to see the result!
+17. Open your default web browser and navigate to http://localhost:3000/ to see the result!
