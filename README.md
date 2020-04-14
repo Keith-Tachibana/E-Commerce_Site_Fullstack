@@ -66,81 +66,36 @@ Try the application live on [my portfolio website](https://ecommerce.keith-tachi
   ```shell
   cp .env.example .env
   ```
-7. Access the wickedSales database using pgweb in your default web browser
+7. Import the schema and dummy data
   ```shell
-  pgweb --db=wickedSales
+  npm run db:import
   ```
-  - 7a. Then navigate to http://localhost:8081 and click on the "Query" tab
-8. Create schema for products table by copy and pasting this query, then click on "Run Query"
-  ```sql
-  CREATE TABLE "products" (
-    "productId"        SERIAL  PRIMARY KEY,
-    "name"             TEXT    NOT NULL,
-    "price"            INTEGER NOT NULL,
-    "image"            TEXT    NOT NULL,
-    "shortDescription" TEXT    NOT NULL,
-    "longDescription"  TEXT    NOT NULL
-  );
-  ```
-9. Create schema for carts table by copy and pasting this query, then click on "Run Query"
-  ```sql
-  CREATE TABLE "carts" (
-    "cartId"    SERIAL         PRIMARY KEY,
-    "createdAt" TIMESTAMPTZ(6) NOT NULL DEFAULT NOW()
-  );
-  ```
-10. Create schema for cartItems table by copy and pasting this query, then click on "Run Query"
-  ```sql
-  CREATE TABLE "cartItems" (
-    "cartItemId" SERIAL  PRIMARY KEY,
-    "cartId"     INTEGER NOT NULL,
-    "productId"  INTEGER NOT NULL,
-    "price"      INTEGER NOT NULL
-  );
-  ```
-11. Create schema for orders table by copy and pasting this query, then click on "Run Query"
-  ```sql
-  CREATE TABLE "orders" (
-    "orderId"         SERIAL         PRIMARY KEY,
-    "cartId"          INTEGER        NOT NULL,
-    "name"            TEXT           NOT NULL,
-    "creditCard"      TEXT           NOT NULL,
-    "shippingAddress" TEXT           NOT NULL,
-    "createdAt"       TIMESTAMPTZ(6) NOT NULL DEFAULT NOW()
-  );
-  ```
-12. Go back to the console and use the psql REPL (Read Eval Print Loop) to import dummy data
-  ```shell
-  psql db=wickedSales
-  \copy products from '/home/dev/lfz/E-Commerce_Site_Fullstack/products.csv' delimiter ',' csv header;
-  ```
-  - ...where `/home/dev/lfz/E-Commerce_Site_Fullstack` is the absolute path to your cloned folder from step 2
-13. Edit your nginx default site configuration to reverse proxy the Express.js server
+8. Edit your nginx default site configuration to reverse proxy the Express.js server
   ```shell
   cd /etc/nginx/sites-available
   sudo nano default
   ```
-   - 13a. In the "server" code block, add this underneath the first location definition:
+   - 8a. In the "server" code block, add this underneath the first location definition:
         ```shell
         location /api {
           proxy_pass http://127.0.0.1:3001;
         }
         ```
-   - 13b. Save your changes (`Ctrl + O`) and exit (`Ctrl + X`)
-   - 13c. Link your default site to the sites-enabled directory (if not already done):
+   - 8b. Save your changes (`Ctrl + O`) and exit (`Ctrl + X`)
+   - 8c. Link your default site to the sites-enabled directory (if not already done):
         ```shell
         sudo ln -s /etc/nginx/sites-available/default /etc/nginx/sites-enabled/default
         ```
-14. Start nginx
+9. Start nginx
   ```shell
   sudo service nginx start
   ```
-15. Transpile React components using Webpack
+10. Transpile React components using Webpack
   ```shell
   npm run build
   ```
-16. Start the Express.js server using the PM2 module
+11. Start the Express.js server using the PM2 module
   ```shell
   sudo pm2 --name "eCommerceSite" start "npm run start"
   ```
-17. Open your default web browser and navigate to http://localhost:3000/ to see the result!
+12. Open your default web browser and navigate to http://localhost:3000/ to see the result!
