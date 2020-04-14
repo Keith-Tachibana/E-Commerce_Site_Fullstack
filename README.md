@@ -62,7 +62,7 @@ Try the application live on [my portfolio website](https://ecommerce.keith-tachi
   ```shell
   createdb wickedSales
   ```
-6. Make a copy of .env.example
+6. Make a copy of .env.example and update it with your PostgreSQL credentials
   ```shell
   cp .env.example .env
   ```
