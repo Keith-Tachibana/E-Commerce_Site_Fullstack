@@ -10,7 +10,8 @@ class CheckoutForm extends Component {
       shippingAddress: '',
       creditCardIsNumber: false,
       nameIsLetters: false,
-      addressMultiLine: false
+      addressMultiLine: false,
+      emptyFields: false
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,17 +27,33 @@ class CheckoutForm extends Component {
       creditCardIsNumber: digitRegExp.test(this.state.creditCard),
       nameIsLetters: lettersRegExp.test(this.state.name),
       addressMultiLine: multiLineRegExp.test(this.state.shippingAddress)
+    }, () => {
+      const { name, creditCard, shippingAddress } = this.state;
+      if (name === '' || creditCard === '' || shippingAddress === '') {
+        this.setState(prevState => {
+          return {
+            emptyFields: true
+          };
+        });
+      } else {
+        this.setState(prevState => {
+          return {
+            emptyFields: false
+          };
+        });
+      }
     });
   }
 
   handleSubmit(event) {
     event.preventDefault();
-    const { placeOrder } = this.props;
+    const { placeOrder, history } = this.props;
     const order = {};
     order.name = this.state.name;
     order.creditCard = this.state.creditCard;
     order.shippingAddress = this.state.shippingAddress;
     placeOrder(order);
+    history.push('/');
   }
 
   minLengthCC() {
@@ -59,7 +76,7 @@ class CheckoutForm extends Component {
 
   multiLineAddress() {
     return this.state.addressMultiLine === false
-      ? 'Your street number and name must be on one line, and your city, state, and zip code on another.'
+      ? 'Your street number and street name must be on one line, and your city, state, and zip code on another.'
       : '';
   }
 
@@ -181,6 +198,7 @@ class CheckoutForm extends Component {
                   name="place-order"
                   type="submit"
                   onClick={this.handleSubmit}
+                  disabled={(this.state.name.length === 0 || this.state.emptyFields) ? 'disabled' : false}
                   className="btn btn-primary">
                     Place Order
                 </button>

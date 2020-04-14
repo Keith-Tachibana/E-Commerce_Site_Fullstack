@@ -1,6 +1,13 @@
 import React, { Component } from 'react';
 
 class CartSummaryItem extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      shouldCancel: false
+    };
+  }
+
   render() {
     const { item, deleteItem } = this.props;
     return (

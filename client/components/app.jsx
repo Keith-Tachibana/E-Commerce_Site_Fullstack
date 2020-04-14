@@ -124,34 +124,35 @@ class App extends Component {
         <Header
           cartItemCount={this.state.cart.length} />
         <Switch>
-          <Route path="/" exact render={props =>
-            <React.Fragment>
-              <ProductList
-                setView={this.setView} />
-            </React.Fragment>
-          } />
-          <Route path="/cart" exact render={props =>
+          <Route path="/cart" render={props =>
             <React.Fragment>
               <CartSummary
                 deleteItem={this.deleteItem}
                 cart={this.state.cart} />
             </React.Fragment>
           } />
-          <Route path="/checkout" exact render={props =>
+          <Route path="/checkout" render={props =>
             <React.Fragment>
               <CheckoutForm
+                {...props}
                 cart={this.state.cart}
                 placeOrder={this.placeOrder} />
             </React.Fragment>
           } />
-          <Route path="/:productId" exact render={props =>
+          <Route path="/:productId" render={props =>
             <React.Fragment>
               <ProductDetails
                 params={this.state.view.params}
                 addToCart={this.addToCart} />
             </React.Fragment>
           } />
-          <Route path="/" render={() => <div className="m-4 h1"><em>404:</em> Page not found</div>} />
+          <Route path="/" render={props =>
+            <React.Fragment>
+              <ProductList
+                setView={this.setView} />
+            </React.Fragment>
+          } />
+          <Route render={() => <div className="m-4 h1"><em>404:</em> Page not found</div>} />
         </Switch>
       </Router>
     );

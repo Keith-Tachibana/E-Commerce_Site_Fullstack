@@ -32,10 +32,13 @@ class CartSummary extends Component {
                 {cartItems.length === 0 ? <div className="ml-4 mb-4"><em>No items in cart</em></div> : <div>{cartItems}</div>}
                 <div className="cart-footer justify-content-between my-4 w-75">
                   <h2 className="ml-4">Item Total: ${(total / 100).toFixed(2)}</h2>
-                  <button
-                    className="btn btn-primary">
-                    <Link to="/checkout" className="text-white">Checkout</Link>
-                  </button>
+                  <Link to="/checkout" className="text-white">
+                    <button
+                      className="btn btn-primary"
+                      disabled={cartItems.length === 0 ? 'disabled' : false}>
+                      Checkout
+                    </button>
+                  </Link>
                 </div>
               </div>
             </div>

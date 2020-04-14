@@ -171,6 +171,5 @@
 @media only screen and (max-width: 667px) and (orientation: landscape) {
   .product-items {
     display: flex;
-
   }
 }
