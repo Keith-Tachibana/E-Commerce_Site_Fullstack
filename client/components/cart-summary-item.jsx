@@ -4,8 +4,21 @@ class CartSummaryItem extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      shouldCancel: false
+      shouldCancel: false,
+      quantity: 1
     };
+  }
+  
+  decrease() {
+    this.setState({
+      quantity: --this.state.quantity
+    });
+  }
+  
+  increase() {
+    this.setState({
+      quantity: ++this.state.quantity
+    });
   }
 
   render() {
@@ -26,6 +39,7 @@ class CartSummaryItem extends Component {
                 onClick={() => deleteItem(item.cartItemId)}>
                   Remove From Cart
               </button>
+              <div onClick={this.decrease()}>-</div>Qty:{this.state.quantity}<div onClick={this.increase()}>+</div>
             </div>
           </div>
         </div>
