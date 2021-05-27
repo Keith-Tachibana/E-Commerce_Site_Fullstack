@@ -1,4 +1,4 @@
-# E-Commerce Site Fullstack
+# Shop Online
 A full-stack e-commerce website that lets the user view, add, and remove items from a shopping cart and place an order
 ## Technologies Used
 |             Dependency             |   Version   |
@@ -21,7 +21,7 @@ A full-stack e-commerce website that lets the user view, add, and remove items f
 | Webpack                            |    4.42.0   |
 | Webpack-CLI                        |    3.3.11   |
 ## Live Demo
-Try the application live on [my portfolio website](https://ecommerce.keith-tachibana.com/)
+Try the application live on [my portfolio website](https://shop.keith-tachibana.com/)
 ## Features
 - _*_ Shopper can view the products for sale
 - _*_ Shopper can view the details of any product by clicking on it
@@ -30,7 +30,7 @@ Try the application live on [my portfolio website](https://ecommerce.keith-tachi
 - _*_ Shopper can view the cart summary of all the items added to see the total price
 - _*_ Shopper can fill out a form with his/her pertinent information to place the order
 ## Preview
-![E-Commerce Site Fullstack Preview](preview.gif "E-Commerce Site Fullstack Preview")
+![Shop Online Preview](preview.gif "Shop Online Preview")
 ## Development
 #### System Requirements
 |   Requirement   |       Version       |
@@ -60,7 +60,7 @@ Try the application live on [my portfolio website](https://ecommerce.keith-tachi
   ```
 5. Create the database
   ```shell
-  createdb wickedSales
+  createdb shop
   ```
 6. Make a copy of .env.example and update it with your PostgreSQL credentials
   ```shell
@@ -96,6 +96,6 @@ Try the application live on [my portfolio website](https://ecommerce.keith-tachi
   ```
 11. Start the Express.js server using the PM2 module
   ```shell
-  sudo pm2 --name "eCommerceSite" start "npm run start"
+  sudo pm2 --name "Shop Online" start "npm run start"
   ```
-12. Open your default web browser and navigate to http://localhost:3000/ to see the result!
+12. Open your default web browser and navigate to http://localhost:3001/ to see the result!

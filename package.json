@@ -1,5 +1,5 @@
 {
-  "name": "wicked-sales-js",
+  "name": "e-commerce_site_fullstack",
   "version": "1.0.0",
   "description": "A full stack Node.js and React shopping cart app",
   "main": "server/index.js",
@@ -87,15 +87,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Keith-Tachibana/wicked-sales-js.git"
+    "url": "git+https://github.com/Keith-Tachibana/e-commerce_site_fullstack.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Keith-Tachibana/wicked-sales-js/issues"
+    "url": "https://github.com/Keith-Tachibana/e-commerce_site_fullstack/issues"
   },
-  "homepage": "https://github.com/Keith-Tachibana/wicked-sales-js#readme",
+  "homepage": "https://github.com/Keith-Tachibana/e-commerce_site_fullstack#readme",
   "dependencies": {
     "dotenv": "8.2.0",
     "express": "4.17.1",
