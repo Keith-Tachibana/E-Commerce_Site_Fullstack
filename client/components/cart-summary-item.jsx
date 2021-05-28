@@ -5,24 +5,31 @@ class CartSummaryItem extends Component {
     super(props);
     this.state = {
       shouldCancel: false,
-      quantity: 1
+      quantity: this.props.quantity
     };
+    this.decrease = this.decrease.bind(this);
+    this.increase = this.increase.bind(this);
   }
-  
+
   decrease() {
-    this.setState({
-      quantity: --this.state.quantity
+    this.setState(prevState => {
+      return {
+        quantity: prevState.quantity - 1
+      };
     });
   }
-  
+
   increase() {
-    this.setState({
-      quantity: ++this.state.quantity
+    this.setState(prevState => {
+      return {
+        quantity: prevState.quantity + 1
+      };
     });
   }
 
   render() {
-    const { item, deleteItem } = this.props;
+    const { item, deleteItem, quantity } = this.props;
+    console.log('Quantity:', quantity);
     return (
       <React.Fragment>
         <div className="item-container mb-4 ml-4 mr-4">
@@ -39,7 +46,15 @@ class CartSummaryItem extends Component {
                 onClick={() => deleteItem(item.cartItemId)}>
                   Remove From Cart
               </button>
-              <div onClick={this.decrease()}>-</div>Qty:{this.state.quantity}<div onClick={this.increase()}>+</div>
+              <button
+                className="btn btn-sm btn-warning"
+                onClick={() => this.decrease()}>-
+              </button>
+
+              <button
+                className="btn btn-sm btn-info"
+                onClick={() => this.increase()}>+
+              </button>
             </div>
           </div>
         </div>
