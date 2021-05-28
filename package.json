@@ -8,7 +8,7 @@
     "dev:client": "webpack-dev-server",
     "dev:server": "nodemon server/index.js",
     "db:import": "source .env; psql $DATABASE_URL < database/dump.sql",
-    "db:export": "pg_dump -c -O -d shop -h localhost -p 5432 -U keith -f database/dump.sql",
+    "db:export": "pg_dump -c -C -O shop > database/dump.sql",
     "build": "webpack --mode=production",
     "start": "NODE_ENV=production node server/index.js"
   },

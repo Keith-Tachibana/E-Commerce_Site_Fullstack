@@ -16,22 +16,6 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
-ALTER TABLE ONLY public.products DROP CONSTRAINT products_pkey;
-ALTER TABLE ONLY public.orders DROP CONSTRAINT orders_pkey;
-ALTER TABLE ONLY public.carts DROP CONSTRAINT carts_pkey;
-ALTER TABLE ONLY public."cartItems" DROP CONSTRAINT "cartItems_pkey";
-ALTER TABLE public.products ALTER COLUMN "productId" DROP DEFAULT;
-ALTER TABLE public.orders ALTER COLUMN "orderId" DROP DEFAULT;
-ALTER TABLE public.carts ALTER COLUMN "cartId" DROP DEFAULT;
-ALTER TABLE public."cartItems" ALTER COLUMN "cartItemId" DROP DEFAULT;
-DROP SEQUENCE public."products_productId_seq";
-DROP TABLE public.products;
-DROP SEQUENCE public."orders_orderId_seq";
-DROP TABLE public.orders;
-DROP SEQUENCE public."carts_cartId_seq";
-DROP TABLE public.carts;
-DROP SEQUENCE public."cartItems_cartItemId_seq";
-DROP TABLE public."cartItems";
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
@@ -199,13 +183,7 @@ ALTER TABLE ONLY public.products ALTER COLUMN "productId" SET DEFAULT nextval('p
 --
 
 COPY public."cartItems" ("cartItemId", "cartId", "productId", price) FROM stdin;
-2	2	2	2595
-3	2	2	2595
-4	3	6	830
-5	3	4	999
-6	3	2	2595
-7	3	2	2595
-8	4	3	2900
+2	1	2	2595
 \.
 
 
@@ -214,10 +192,7 @@ COPY public."cartItems" ("cartItemId", "cartId", "productId", price) FROM stdin;
 --
 
 COPY public.carts ("cartId", "createdAt") FROM stdin;
-1	2021-05-23 04:14:34.919316+00
-2	2021-05-26 12:29:35.635336+00
-3	2021-05-27 11:31:31.676078+00
-4	2021-05-27 12:53:19.151874+00
+1	2021-05-27 12:49:05.671018-07
 \.
 
 

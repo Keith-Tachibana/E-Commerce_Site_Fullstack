@@ -17,12 +17,14 @@ class App extends Component {
         name: 'catalog',
         params: {}
       },
-      cart: []
+      cart: [],
+      cartObj: {}
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
     this.placeOrder = this.placeOrder.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
+    this.findQuantity = this.findQuantity.bind(this);
   }
 
   componentDidMount() {
@@ -43,13 +45,29 @@ class App extends Component {
     });
   }
 
+  findQuantity(cart = this.state.cart.length > 0 ? this.state.cart : []) {
+    if (this.state.cart.length === 0) return;
+    const { cartObj } = this.state;
+    for (let i = 0; i < cart.length; i++) {
+      const { productId } = Object.fromEntries(Object.entries(cart[i]));
+      if (!cartObj[productId]) {
+        cartObj[productId] = 1;
+        continue;
+      } else if (cartObj[productId]) {
+        cartObj[productId]++;
+        continue;
+      }
+    }
+    return cartObj;
+  }
+
   async getCartItems() {
     try {
       const response = await fetch('/api/cart');
       const cart = await response.json();
       this.setState({
         cart
-      });
+      }, this.findQuantity(this.state.cart));
     } catch (error) {
       console.error(error.message);
     }
@@ -71,10 +89,11 @@ class App extends Component {
       this.setState(previous => {
         const updatedCart = [...previous.cart];
         updatedCart.push(json);
+        console.log('UpdatedCart:', updatedCart);
         return {
           cart: updatedCart
         };
-      });
+      }, this.findQuantity(this.state.cart));
     } catch (error) {
       console.error(error.message);
     }
@@ -90,7 +109,8 @@ class App extends Component {
         headers
       });
       this.setState({
-        cart: []
+        cart: [],
+        cartObj: {}
       });
     } catch (error) {
       console.error(error.message);
@@ -112,7 +132,7 @@ class App extends Component {
         return {
           cart: updatedCart
         };
-      });
+      }, this.findQuantity(this.state.cart));
     } catch (error) {
       console.error(error.message);
     }
@@ -128,7 +148,8 @@ class App extends Component {
             <React.Fragment>
               <CartSummary
                 deleteItem={this.deleteItem}
-                cart={this.state.cart} />
+                cart={this.state.cart}
+                quantity={this.state.cartObj} />
             </React.Fragment>
           } />
           <Route path="/checkout" render={props =>
@@ -136,14 +157,16 @@ class App extends Component {
               <CheckoutForm
                 {...props}
                 cart={this.state.cart}
-                placeOrder={this.placeOrder} />
+                placeOrder={this.placeOrder}
+                quantity={this.state.cartObj} />
             </React.Fragment>
           } />
           <Route path="/:productId" render={props =>
             <React.Fragment>
               <ProductDetails
                 params={this.state.view.params}
-                addToCart={this.addToCart} />
+                addToCart={this.addToCart}
+                quantity={this.state.cartObj} />
             </React.Fragment>
           } />
           <Route path="/" render={props =>

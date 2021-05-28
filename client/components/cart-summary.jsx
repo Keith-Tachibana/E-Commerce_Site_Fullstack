@@ -5,13 +5,14 @@ import CartSummaryItem from './cart-summary-item';
 
 class CartSummary extends Component {
   render() {
-    const { cart, deleteItem } = this.props;
+    const { cart, deleteItem, quantity } = this.props;
     const total = cart.length === 0 ? 0 : cart.reduce((accumulator, current) => accumulator + current.price, 0);
     const cartItems = cart.map(cartItem => {
       return (
         <CartSummaryItem
           key={cartItem.cartItemId}
           deleteItem={deleteItem}
+          quantity={quantity}
           item={cartItem}/>
       );
     });
