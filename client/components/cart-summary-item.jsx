@@ -7,6 +7,8 @@ class CartSummaryItem extends Component {
       shouldCancel: false,
       quantity: 1
     };
+    this.decrease = this.decrease.bind(this);
+    this.increase = this.increase.bind(this);
   }
   
   decrease() {
@@ -39,7 +41,9 @@ class CartSummaryItem extends Component {
                 onClick={() => deleteItem(item.cartItemId)}>
                   Remove From Cart
               </button>
-              <div onClick={this.decrease()}>-</div>Qty:{this.state.quantity}<div onClick={this.increase()}>+</div>
+              <button className="btn btn-sm btn-warning" onClick={this.decrease()}>-</button>
+                Qty:{this.state.quantity}
+              <button className="btn btn-sm btn-info" onClick={this.increase()}>+</button>
             </div>
           </div>
         </div>
