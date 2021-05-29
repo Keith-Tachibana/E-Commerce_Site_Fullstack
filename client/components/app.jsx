@@ -89,6 +89,7 @@ class App extends Component {
       this.setState(previous => {
         const updatedCart = [...previous.cart];
         updatedCart.push(json);
+        // eslint-disable-next-line no-console
         console.log('UpdatedCart:', updatedCart);
         return {
           cart: updatedCart

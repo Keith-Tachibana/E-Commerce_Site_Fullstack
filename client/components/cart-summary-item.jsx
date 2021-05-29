@@ -29,6 +29,7 @@ class CartSummaryItem extends Component {
 
   render() {
     const { item, deleteItem, quantity } = this.props;
+    // eslint-disable-next-line no-console
     console.log('Quantity:', quantity);
     return (
       <React.Fragment>
