@@ -9,14 +9,16 @@ class ProductListItem extends Component {
         <div
           key={product.productId}
           onClick={(name, params) => setView('details', { productId: product.productId })}
-          className="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-4 my-4 product-item ">
+          className="my-4 product-item ">
           <Link to={`/${product.productId}`} className="text-body" >
             <div className="card h-100">
               <img className="card-img-top img-fluid" src={product.image} alt={product.name} height="50" width="100" />
               <div className="card-body">
-                <h3 className="card-title">{product.name}</h3>
+                <h5 className="card-title"><em>{product.name}</em></h5>
                 <h6 className="card-text text-secondary">${(product.price / 100).toFixed(2)}</h6>
-                <p className="card-text">{product.shortDescription}</p>
+              </div>
+              <div className="card-footer">
+                <p className="card-text">&quot;{product.shortDescription}&quot;</p>
               </div>
             </div>
           </Link>

@@ -7,12 +7,12 @@ class Header extends Component {
     const count = cartItemCount === undefined ? 0 : cartItemCount;
     return (
       <React.Fragment>
-        <header className="bg-dark mb-4 d-flex justify-content-between text-white">
-          <h1 className="ml-4"><em><i className="fas fa-dollar-sign"></i></em> Shop Online</h1>
+        <header className="bg-dark mb-4 d-flex justify-content-between">
+          <Link to="/" className="nav-link"><h1 className="ml-4"><em className="text-white">&#129304; Metal Music Mart &#129304;</em></h1></Link>
           <Link to="/cart" className="text-white">
             <h3 className="shopping-cart">
               {count} {count === 1 ? 'item' : 'items'}
-              <i className="fas fa-shopping-cart mr-4 mt-2 ml-2"></i>
+              <i className="fas fa-shopping-cart mr-4 mt-3 ml-2"></i>
             </h3>
           </Link>
         </header>
