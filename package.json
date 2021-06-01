@@ -5,7 +5,7 @@
   "main": "server/index.js",
   "scripts": {
     "dev": "npm-run-all --silent --parallel dev:*",
-    "dev:client": "webpack-dev-server",
+    "dev:client": "webpack serve",
     "dev:server": "nodemon server/index.js",
     "db:import": "source .env; psql $DATABASE_URL < database/dump.sql",
     "db:export": "pg_dump -c -C -O shop > database/dump.sql",
@@ -89,7 +89,7 @@
     "url": "git+https://github.com/Keith-Tachibana/e-commerce_site_fullstack.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Keith Tachibana",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Keith-Tachibana/e-commerce_site_fullstack/issues"
@@ -116,11 +116,12 @@
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.0",
     "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-standard": "^5.0.0",
     "husky": "^6.0.0",
     "lint-staged": "^11.0.0",
     "nodemon": "^2.0.7",
     "npm-run-all": "4.1.5",
-    "webpack": "^5.37.1",
+    "webpack": "^4.46.0",
     "webpack-cli": "^4.7.0",
     "webpack-dev-server": "^3.11.2"
   }
