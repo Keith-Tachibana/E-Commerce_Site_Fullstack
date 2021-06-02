@@ -2,9 +2,42 @@
   box-sizing: border-box;
 }
 
-.container {
-  width: 100vw;
+/* body {
+  min-width: 225px;
+  overflow-x: hidden;
+} */
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
 }
+
+[class*="col-"] {
+  float: left;
+  padding: 15px;
+}
+
+.header {
+  padding: 15px;
+}
+
+.aside {
+  padding: 15px;
+  text-align: center;
+  font-size: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+.footer {
+  text-align: center;
+  font-size: 0.9rem;
+  padding: 15px;
+}
+
+/* .container {
+  width: 100vw;
+} */
 
 .nav-link {
   text-decoration: none;
@@ -14,13 +47,11 @@
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 5fr));
   grid-gap: 1rem;
-
-
 }
 
 .card-img-top {
   width: 100%;
-  height: 15vh;
+  min-height: clamp(175px, 200px, 210px);
   object-fit: cover;
 }
 
@@ -30,48 +61,34 @@
   cursor: pointer;
 }
 
-.product-detail {
-  border: clamp(0.2rem, 0.25rem, 0.3rem) solid #000;
-  height: 100vh;
-  margin: 25px;
-  border-radius: 5px;
+/* .details-top {
   display: grid;
-  grid-template-columns: 1fr 1fr 2fr 2fr;
-  grid-template-rows: repeat(7, 1fr);
-}
+  grid-template-columns: repeat(3, 300px);
+  grid-template-rows: repeat(3, 500px);
+  justify-items: stretch;
+} */
 
-.product-detail a {
-  grid-column: 1 / span 2;
-  grid-row: 1 / span 1;
-}
-
-.img-container img  {
-  grid-column 3 / span 4;
-  grid-row: 2 / span 3;
-}
-
-.product-info h1 {
-  grid-column: 1 / span 3;
-}
-
-.img-detail {
-  height: auto;
-  width: 50%;
-  margin-left: 25px;
-}
-
-.product-desc {
-  margin: 25px;
-}
-
-.item-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 2px solid #ddd;
+/* .product-detail {
+  border: clamp(0.45px, 0.5px, 0.55px) solid #000;
+  height: 100vh;
+  margin: 0 5px;
   border-radius: 5px;
-  padding: 15px;
-}
+} */
+
+/* .img-detail {
+  height: auto;
+  max-width: 100%;
+} */
+
+/* .product-desc {
+  margin: 25px;
+} */
+
+/* .item-container {
+
+  border: 2px solid #ddd;
+
+} */
 
 .item-img {
   height: auto;
@@ -80,9 +97,9 @@
   margin: 0 auto;
 }
 
-.img-container {
-  margin: 0 auto;
-}
+/* .img-container {
+  grid-column: 2 / span 1;
+} */
 
 .item {
   margin-top: 25px;
@@ -117,6 +134,49 @@
   display: flex;
 }
 
+
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+/* For tablets: */
+@media only screen and (min-width: 600px) {
+  .col-s-1 {width: 8.33%;}
+  .col-s-2 {width: 16.66%;}
+  .col-s-3 {width: 25%;}
+  .col-s-4 {width: 33.33%;}
+  .col-s-5 {width: 41.66%;}
+  .col-s-6 {width: 50%;}
+  .col-s-7 {width: 58.33%;}
+  .col-s-8 {width: 66.66%;}
+  .col-s-9 {width: 75%;}
+  .col-s-10 {width: 83.33%;}
+  .col-s-11 {width: 91.66%;}
+  .col-s-12 {width: 100%;}
+}
+
+/* For desktop: */
+@media only screen and (min-width: 768px) {
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+}
+
+
+
+
+
+/*
 @media only screen and (max-width: 575px) {
   /* .product-items {
     display: flex;
@@ -127,20 +187,20 @@
     min-width: 100%;
   } */
 
-  header h1,
+  header h2,
   header a h3 {
-    font-size: 1rem;
+    font-size: 1.25rem;
   }
 
-  header h1 {
+  header h2 {
     margin: 5px 0;
   }
 
-  .img-container {
+  /* .img-container {
     max-width: 90%;
     position: relative;
     right: 7%;
-  }
+  } */
 
   .details-top {
     display: flex;
@@ -202,8 +262,23 @@
   }
 }
 
-@media only screen and (max-width: 667px) and (orientation: landscape) {
-  /* .product-items {
-    display: flex;
-  } */
+@media only screen and (max-width: 382px) {
+  header h2,
+  header a h3 {
+    font-size: 1rem;
+  }
 }
+
+@media only screen and (max-width: 322px) {
+  header h2,
+  header a h3 {
+    font-size: 0.75rem;
+  }
+}
+
+@media only screen and (max-width: 265px) {
+  header h2,
+  header a h3 {
+    font-size: 0.5rem;
+  }
+} */

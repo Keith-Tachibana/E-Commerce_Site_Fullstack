@@ -30,39 +30,50 @@ class ProductDetails extends Component {
     const { product } = this.state;
     const { addToCart, params } = this.props;
     if (!product) {
-      return <div className="ml-4">Loading...</div>;
+      return <div className="header">Loading...</div>;
     } else {
       return (
         <React.Fragment>
-          <section className="product-detail">
-            <Link to="/" className="text-muted">
-              <h5
-                className="back-button mt-4 ml-4">
+          <section className="row">
+            <Link to="/" className="col-12 col-s-12 text-muted">
+              <h5 className="back-button mt-4 ml-4">
                 <i className="fas fa-chevron-left mr-2"></i>
                 Back to catalog
               </h5>
             </Link>
-            <div className="row details-top">
-              <div className="mt-4 img-container">
-                <img src={product.image} alt={product.name} className="img-detail img-fluid" />
-              </div>
-              <div className="product-info">
-                <h1 className="ml-4">{product.name}</h1>
-                <h3 className="text-secondary ml-4">${(product.price / 100).toFixed(2)}</h3>
-                <h6 className="mr-4 ml-4">{product.shortDescription}</h6>
-                <button
-                  className="btn btn-primary ml-4"
-                  onClick={product => addToCart({ productId: params.productId })}>
-                    Add To Cart
-                </button>
+          </section>
+          <main>
+            <div className="row">
+              <div className="col-3 col-s-3">
+                <div className="mt-4">
+                  <img src={product.image} alt={product.name} className="img-fluid" />
+                </div>
+                <div className="col-6 col-s-9">
+                  <h1 className="ml-4">{product.name}</h1>
+                  <h3 className="text-secondary ml-4">${(product.price / 100).toFixed(2)}</h3>
+                  <h6 className="mr-4 ml-4">{product.shortDescription}</h6>
+                  <button
+                    className="btn btn-primary ml-4"
+                    onClick={product => addToCart({ productId: params.productId })}>
+                      Add To Cart
+                  </button>
+                </div>
+                <div className="col-3 col-s-12">
+                  <div className="aside">
+
+                  </div>
+                </div>
               </div>
             </div>
             <div className="row">
-              <div>
+              <div className="col-12 col-s-12">
                 <p className="product-desc">{product.longDescription}</p>
               </div>
             </div>
-          </section>
+          </main>
+          <footer className="footer">
+            <p>&copy; Keith Tachibana</p>
+          </footer>
         </React.Fragment>
       );
     }
