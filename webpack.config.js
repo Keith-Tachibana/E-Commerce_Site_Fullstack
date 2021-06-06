@@ -5,12 +5,13 @@ const clientPath = path.join(__dirname, 'client/');
 const publicPath = path.join(__dirname, 'server/public/');
 
 module.exports = {
-  mode: 'production',
+  mode: 'development',
   resolve: {
     extensions: ['.js', '.jsx']
   },
   entry: clientPath,
   output: {
+    filename: '[name].bundle.js',
     path: publicPath
   },
   module: {
@@ -21,7 +22,8 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             plugins: [
-              '@babel/plugin-transform-react-jsx'
+              '@babel/plugin-transform-react-jsx',
+              '@babel/plugin-proposal-optional-chaining'
             ]
           }
         }

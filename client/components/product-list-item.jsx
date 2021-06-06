@@ -22,6 +22,7 @@ class ProductListItem extends Component {
                 <small className="card-text text-secondary">${(product.price / 100).toFixed(2)}</small>
               </div>
               <div className="card-footer text-center">
+                <h6 className="card-text" style={{ textDecoration: 'underline' }}>Summary:</h6>
                 <p className="card-text">&quot;{product.shortDescription}.&quot;</p>
               </div>
             </div>

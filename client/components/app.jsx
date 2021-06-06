@@ -142,6 +142,7 @@ class App extends Component {
           <Route path="/:productId" render={props =>
             <React.Fragment>
               <ProductDetails
+                cart={this.state.cart}
                 params={this.state.view.params}
                 addToCart={this.addToCart} />
             </React.Fragment>

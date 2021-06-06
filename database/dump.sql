@@ -28,7 +28,8 @@ CREATE TABLE public."cartItems" (
     "cartItemId" integer NOT NULL,
     "cartId" integer NOT NULL,
     "productId" integer NOT NULL,
-    price integer NOT NULL
+    "price" integer NOT NULL,
+    "quantity" integer NOT NULL
 );
 
 
@@ -182,8 +183,8 @@ ALTER TABLE ONLY public.products ALTER COLUMN "productId" SET DEFAULT nextval('p
 -- Data for Name: cartItems; Type: TABLE DATA; Schema: public; Owner: -
 --
 
-COPY public."cartItems" ("cartItemId", "cartId", "productId", price) FROM stdin;
-2	1	2	2595
+COPY public."cartItems" ("cartItemId", "cartId", "productId", "price", "quantity") FROM stdin;
+2	1	2	25952	2
 \.
 
 
@@ -287,4 +288,3 @@ ALTER TABLE ONLY public.products
 --
 -- PostgreSQL database dump complete
 --
-

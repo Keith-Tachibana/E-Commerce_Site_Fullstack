@@ -61,6 +61,7 @@ app.get('/api/cart', (req, res, next) => {
   if (sessionCartId) {
     const sql = `
       SELECT "c"."cartItemId",
+      "c"."quantity",
       "c"."price",
       "p"."productId",
       "p"."image",
@@ -112,7 +113,8 @@ app.post('/api/cart', (req, res, next) => {
           .then(cartResult => {
             const cartIdPrice = {
               cartId: cartResult.rows[0].cartId,
-              price: result.rows[0].price
+              price: result.rows[0].price,
+              quantity: result.rows[0].quantity
             };
             return cartIdPrice;
           })
@@ -120,10 +122,10 @@ app.post('/api/cart', (req, res, next) => {
     })
     .then(cartIdPrice => {
       req.session.cartId = cartIdPrice.cartId;
-      const cartValues = [cartIdPrice.cartId, productId, cartIdPrice.price];
+      const cartValues = [cartIdPrice.cartId, productId, cartIdPrice.price, cartIdPrice.quantity];
       const cartIdSql = `
-        INSERT INTO "cartItems" ("cartId", "productId", "price")
-        VALUES ($1, $2, $3)
+        INSERT INTO "cartItems" ("cartId", "productId", "price", "quantity")
+        VALUES ($1, $2, $3, $4)
           RETURNING "cartItemId";
       `;
       return (
@@ -133,6 +135,7 @@ app.post('/api/cart', (req, res, next) => {
     .then(cartItemId => {
       const cartItemSql = `
         SELECT "c"."cartItemId",
+        "c"."quantity",
         "c"."price",
         "p"."productId",
         "p"."image",

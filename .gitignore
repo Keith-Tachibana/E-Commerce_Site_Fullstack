@@ -5,4 +5,4 @@
 .DS_Store
 node_modules
 server/sessions/*.json
-server/public/main.js*
+server/public/main.bundle.js*

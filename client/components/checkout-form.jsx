@@ -19,9 +19,9 @@ class CheckoutForm extends Component {
 
   handleChange(event) {
     const { name, value } = event.target;
-    const digitRegExp = /^[0-9]*$/g;
-    const lettersRegExp = /^[A-Za-z]+\\s[A-Za-z]+$/g;
-    const multiLineRegExp = /\\n/gm;
+    const digitRegExp = '/^[0-9]*$/g';
+    const lettersRegExp = '/^[A-Za-z]+\\s[A-Za-z]+$/g';
+    const multiLineRegExp = '/\\n/gm';
     this.setState({
       [name]: value,
       creditCardIsNumber: digitRegExp.test(this.state.creditCard),
