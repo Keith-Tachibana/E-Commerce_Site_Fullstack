@@ -101,6 +101,8 @@ app.post('/api/cart', (req, res, next) => {
           cartId: req.session.cartId,
           price: result.rows[0].price
         };
+        // eslint-disable-next-line no-console
+        console.log('Cart:', cart);
         return cart;
       }
       const cartIdSql = `
@@ -116,11 +118,15 @@ app.post('/api/cart', (req, res, next) => {
               price: result.rows[0].price,
               quantity: result.rows[0].quantity
             };
+            // eslint-disable-next-line no-console
+            console.log('CartIdPrice:', cartIdPrice);
             return cartIdPrice;
           })
       );
     })
     .then(cartIdPrice => {
+      // eslint-disable-next-line no-console
+      console.log('cartIdPrice:', cartIdPrice);
       req.session.cartId = cartIdPrice.cartId;
       const cartValues = [cartIdPrice.cartId, productId, cartIdPrice.price, cartIdPrice.quantity];
       const cartIdSql = `

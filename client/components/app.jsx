@@ -55,10 +55,11 @@ class App extends Component {
     }
   }
 
-  async addToCart(product) {
+  async addToCart(product, quantity, event) {
     try {
       const productAdded = {
-        productId: product.productId
+        productId: product.productId,
+        quantity
       };
       const headers = new Headers();
       headers.append('Content-Type', 'application/json');

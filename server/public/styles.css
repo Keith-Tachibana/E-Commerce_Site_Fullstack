@@ -51,6 +51,10 @@
   cursor: pointer;
 }
 
+#summary-table tr td:last-child {
+  display: inherit;
+}
+
 /* .details-top {
   display: grid;
   grid-template-columns: repeat(3, 300px);
