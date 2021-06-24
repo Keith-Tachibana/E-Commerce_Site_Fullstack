@@ -102,11 +102,11 @@ class ProductDetails extends Component {
                 </label>
                 <button
                   className="btn btn-primary ml-4"
-                  onClick={(product, event) => {
-                    addToCart({ productId: params.productId });
-                    // eslint-disable-next-line no-console
-                    console.log('Event:', event);
-                    event.target.reset();
+                  onClick={product => {
+                    addToCart({ productId: params.productId, quantity: parseInt(1) });
+                    // // eslint-disable-next-line no-console
+                    // console.log('Event:', event);
+                    // event.target.reset();
                   }}>
                     Add To Cart
                 </button>
@@ -131,7 +131,6 @@ class ProductDetails extends Component {
                         <tfoot>
                           <tr>
                             <td rowSpan="2"><small><strong>Sub-Total:</strong></small></td>
-                            <td>{}</td>
                             <td></td>
                             <td></td>
                           </tr>

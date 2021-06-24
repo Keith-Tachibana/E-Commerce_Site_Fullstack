@@ -55,7 +55,7 @@ class App extends Component {
     }
   }
 
-  async addToCart(product, quantity, event) {
+  async addToCart(product, quantity) {
     try {
       const productAdded = {
         productId: product.productId,

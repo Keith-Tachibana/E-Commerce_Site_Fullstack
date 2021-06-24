@@ -82,7 +82,7 @@ app.get('/api/cart', (req, res, next) => {
 });
 
 app.post('/api/cart', (req, res, next) => {
-  const { productId } = req.body;
+  const { productId, quantity } = req.body;
   if ((!parseInt(productId, 10)) || (parseInt(productId, 10) < 1)) {
     throw new ClientError('The productId must be a positive integer.', 400);
   }
@@ -97,6 +97,8 @@ app.post('/api/cart', (req, res, next) => {
         throw new ClientError(`The product with productId ${productId} not found.`, 400);
       }
       if (req.session.cartId) {
+        // eslint-disable-next-line no-console
+        console.log('Result:', result);
         const cart = {
           cartId: req.session.cartId,
           price: result.rows[0].price
@@ -116,7 +118,7 @@ app.post('/api/cart', (req, res, next) => {
             const cartIdPrice = {
               cartId: cartResult.rows[0].cartId,
               price: result.rows[0].price,
-              quantity: result.rows[0].quantity
+              quantity
             };
             // eslint-disable-next-line no-console
             console.log('CartIdPrice:', cartIdPrice);
@@ -154,6 +156,8 @@ app.post('/api/cart', (req, res, next) => {
       return (
         db.query(cartItemSql, [cartItemId.rows[0].cartItemId])
           .then(joinResult => {
+            // eslint-disable-next-line no-console
+            console.log('JoinResult:', joinResult);
             res.status(201).json(joinResult.rows[0]);
           })
       );
