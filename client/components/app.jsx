@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { QuantityContext } from '../QuantityContext';
 
 import Header from './header';
 import ProductList from './product-list';
