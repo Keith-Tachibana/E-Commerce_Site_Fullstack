@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { QuantityContext } from '../QuantityContext';
 
 class ProductDetails extends Component {
   constructor(props) {
@@ -8,8 +9,7 @@ class ProductDetails extends Component {
       product: null,
       artist: '',
       album: '',
-      year: 0,
-      quantity: 0
+      year: 0
     };
     this.handleChange = this.handleChange.bind(this);
     this.handlePlus = this.handlePlus.bind(this);
@@ -66,7 +66,7 @@ class ProductDetails extends Component {
   }
 
   render() {
-    const { product, quantity } = this.state;
+    const { product } = this.state;
     // eslint-disable-next-line no-console
     console.log('Quantity:', quantity);
     const { addToCart, params, cart } = this.props;

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { QuantityContext } from '../QuantityContext';
 
 import Header from './header';
 import ProductList from './product-list';
@@ -129,40 +130,42 @@ class App extends Component {
   render() {
     return (
       <Router>
-        <Header
-          cartItemCount={this.state.cart.length} />
-        <Switch>
-          <Route path="/cart" render={props =>
-            <React.Fragment>
-              <CartSummary
-                deleteItem={this.deleteItem}
-                cart={this.state.cart} />
-            </React.Fragment>
-          } />
-          <Route path="/checkout" render={props =>
-            <React.Fragment>
-              <CheckoutForm
-                {...props}
-                cart={this.state.cart}
-                placeOrder={this.placeOrder} />
-            </React.Fragment>
-          } />
-          <Route path="/:productId" render={props =>
-            <React.Fragment>
-              <ProductDetails
-                cart={this.state.cart}
-                params={this.state.view.params}
-                addToCart={this.addToCart} />
-            </React.Fragment>
-          } />
-          <Route path="/" render={props =>
-            <React.Fragment>
-              <ProductList
-                setView={this.setView} />
-            </React.Fragment>
-          } />
-          <Route render={() => <div className="m-4 h1"><em>404:</em> Page not found</div>} />
-        </Switch>
+        <QuantityContext.Provider>
+          <Header
+            cartItemCount={this.state.cart.length} />
+          <Switch>
+            <Route path="/cart" render={props =>
+              <React.Fragment>
+                <CartSummary
+                  deleteItem={this.deleteItem}
+                  cart={this.state.cart} />
+              </React.Fragment>
+            } />
+            <Route path="/checkout" render={props =>
+              <React.Fragment>
+                <CheckoutForm
+                  {...props}
+                  cart={this.state.cart}
+                  placeOrder={this.placeOrder} />
+              </React.Fragment>
+            } />
+            <Route path="/:productId" render={props =>
+              <React.Fragment>
+                <ProductDetails
+                  cart={this.state.cart}
+                  params={this.state.view.params}
+                  addToCart={this.addToCart} />
+              </React.Fragment>
+            } />
+            <Route path="/" render={props =>
+              <React.Fragment>
+                <ProductList
+                  setView={this.setView} />
+              </React.Fragment>
+            } />
+            <Route render={() => <div className="m-4 h1"><em>404:</em> Page not found</div>} />
+          </Switch>
+        </QuantityContext.Provider>
       </Router>
     );
   }
