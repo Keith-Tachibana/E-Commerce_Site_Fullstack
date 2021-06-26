@@ -12,6 +12,8 @@ class ProductDetails extends Component {
       quantity: 0
     };
     this.handleChange = this.handleChange.bind(this);
+    this.handlePlus = this.handlePlus.bind(this);
+    this.handleMinus = this.handleMinus.bind(this);
   }
 
   componentDidMount() {
@@ -47,13 +49,31 @@ class ProductDetails extends Component {
     });
   }
 
+  handlePlus() {
+    this.setState(prev => {
+      return {
+        quantity: parseInt(prev.quantity + 1)
+      };
+    });
+  }
+
+  handleMinus() {
+    this.setState(prev => {
+      return {
+        quantity: parseInt(prev.quantity - 1)
+      };
+    });
+  }
+
   render() {
-    const { product } = this.state;
+    const { product, quantity } = this.state;
+    // eslint-disable-next-line no-console
+    console.log('Quantity:', quantity);
     const { addToCart, params, cart } = this.props;
     const cartItems = cart.map(cartItem => {
       return (
         <tr key={cartItem.cartItemId}>
-          <td><small>{cartItem.quantity}</small></td>
+          <td><small>{quantity}</small></td>
           <td><small>{cartItem.name}</small></td>
           <td><small>{(cartItem.price / 100).toFixed(2)}</small></td>
           <td><small>{cartItem.quantity * (cartItem.price / 100).toFixed(2)}</small></td>
@@ -88,25 +108,28 @@ class ProductDetails extends Component {
                 <div className="my-3 ml-4">
                   <img src={product.image} alt={product.name} className="img-fluid" />
                 </div>
-                <label htmlFor="quantity" className="ml-4 d-flex flex-column">
-                  Quantity:
-                  <input
-                    type="number"
-                    name="quantity"
-                    id="quantity"
-                    value={this.state.quantity}
-                    onChange={this.handleChange}
-                    style={{ width: '50px' }}
-                    min="1"
-                    max="10" />
-                </label>
+                <button
+                  type="button"
+                  name="minus"
+                  className="ml-4"
+                  onClick={this.handleMinus}>
+                    &minus;
+                </button>
+                <span className="px-4">{quantity}</span>
+                <button
+                  type="button"
+                  name="plus"
+                  onClick={this.handlePlus}>
+                    +
+                </button>
                 <button
                   className="btn btn-primary ml-4"
-                  onClick={(product, event) => {
-                    addToCart({ productId: params.productId });
+                  type="submit"
+                  name="add"
+                  onClick={() => {
                     // eslint-disable-next-line no-console
-                    console.log('Event:', event);
-                    event.target.reset();
+                    console.log('Quantity:', quantity);
+                    addToCart({ productId: params.productId, quantity });
                   }}>
                     Add To Cart
                 </button>
@@ -131,7 +154,6 @@ class ProductDetails extends Component {
                         <tfoot>
                           <tr>
                             <td rowSpan="2"><small><strong>Sub-Total:</strong></small></td>
-                            <td>{}</td>
                             <td></td>
                             <td></td>
                           </tr>

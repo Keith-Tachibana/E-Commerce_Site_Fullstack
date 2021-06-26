@@ -17,7 +17,8 @@ class App extends Component {
         name: 'catalog',
         params: {}
       },
-      cart: []
+      cart: [],
+      quantity: 0
     };
     this.setView = this.setView.bind(this);
     this.addToCart = this.addToCart.bind(this);
@@ -55,7 +56,9 @@ class App extends Component {
     }
   }
 
-  async addToCart(product, quantity, event) {
+  async addToCart(product, quantity) {
+    // eslint-disable-next-line no-console
+    console.log('Quantity:', quantity);
     try {
       const productAdded = {
         productId: product.productId,
@@ -69,12 +72,16 @@ class App extends Component {
         headers
       });
       const json = await response.json();
+      // eslint-disable-next-line no-console
+      console.log('JSON:', json);
       this.setState(previous => {
         const updatedCart = [...previous.cart];
         updatedCart.push(json);
         return {
           cart: updatedCart
         };
+      }, () => {
+        alert(`${json.name} added to cart!`);
       });
     } catch (error) {
       console.error(error.message);

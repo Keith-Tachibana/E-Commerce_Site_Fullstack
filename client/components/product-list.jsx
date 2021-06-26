@@ -18,6 +18,8 @@ class ProductList extends Component {
     try {
       const response = await fetch('/api/products');
       const products = await response.json();
+      // eslint-disable-next-line no-console
+      console.log('Products:', products);
       this.setState({
         products
       });
