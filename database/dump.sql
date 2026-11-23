@@ -21,10 +21,10 @@ DROP DATABASE shop;
 -- Name: shop; Type: DATABASE; Schema: -; Owner: -
 --
 
-CREATE DATABASE shop WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'C.UTF-8';
+CREATE DATABASE metalshop WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'C.UTF-8';
 
 
-\connect shop
+\connect metalshop
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
